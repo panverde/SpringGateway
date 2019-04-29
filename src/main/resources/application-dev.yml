@@ -1,0 +1,20 @@
+server:
+   port: ${PORT:8099}
+ 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.99.100:8761/eureka/
+
+ 
+zuul:
+  routes:
+     student1:
+      path: /micro-student/**
+      url:  http://192.168.99.100:8080/ 
+     student2:
+      path: /micro-api/**
+      serviceId: MICRO-STUDENT
+     master:
+      path: /micro-boot/**
+      serviceId: MICRO-CLASS
